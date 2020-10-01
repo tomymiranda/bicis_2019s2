@@ -1,3 +1,5 @@
+import bicis.*
+import accesorio.*
 class Deposito {
 
 	var bicisEnElDeposito = []
@@ -8,8 +10,9 @@ class Deposito {
 
 	method agregarBici(bici) {
 		bicisEnElDeposito.add(bici)
+		bicisEnElDeposito.get(self.bicisEnElDeposito().size()-1).setCodigoIdentificacion(self.bicisEnElDeposito().size())
 	}
-
+	
 	method coleccionDeBicisRapidas() {
 		return bicisEnElDeposito.filter({ c => c.velocidadDeCrucero() > 25 })
 	}
@@ -19,7 +22,7 @@ class Deposito {
 	}
 
 	method esNocturno() {
-		return bicisEnElDeposito.all({ c => c.esLuminoso() })
+		return bicisEnElDeposito.all({ c => c.tieneLuz() })
 	}
 
 	method tieneBiciParaLlevarCargaDe_(cargaALlevar) {
@@ -39,22 +42,22 @@ class Deposito {
 		return bicisEnElDeposito.filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() }).filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() }).filter({ j => (j.largoEnCm() - bici.largoEnCm()).abs() <= 10 })
 	}
 
-/*
- * method bicisCompanieras(bici){
- * 	self.bicisDistintasA_(bici).bicisDeIgualMarca(bici).bicisQueNoSuperanElLargoEn10Cm(bici)
- * }
 
- * method bicisDistintasA_(bici){
- * 	return bicisEnElDeposito.filter({c => c.codigoIdentificacion() != bici.codigoIdentificacion()})
- * }
+  method bicisCompanieras2(bici){
+  	self.bicisDistintasA_(bici).bicisDeIgualMarca(bici).bicisQueNoSuperanElLargoEn10Cm(bici)
+  }
 
- * method bicisDeIgualMarca(bici){
- * 	return  bicisEnElDeposito.filter({i => i.marca() == bici.marca() })
- * }
+  method bicisDistintasA_(bici){
+  	return bicisEnElDeposito.filter({c => c.codigoIdentificacion() != bici.codigoIdentificacion()})
+  }
 
- * method bicisQueNoSuperanElLargoEn10Cm(bici){
- * 	return bicisEnElDeposito.filter({j => (j.largoEnCm() - bici.largoEnCm()).abs() <= 10 })
- * }
- */
+  method bicisDeIgualMarca(bici){
+  	return  bicisEnElDeposito.filter({i => i.marca() == bici.marca() })
+  }
+
+  method bicisQueNoSuperanElLargoEn10Cm(bici){
+  	return bicisEnElDeposito.filter({j => (j.largoEnCm() - bici.largoEnCm()).abs() <= 10 })
+  }
+ 
 }
 
