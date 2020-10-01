@@ -41,23 +41,6 @@ class Deposito {
 	method bicisCompanieras(bici) {
 		return bicisEnElDeposito.filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() }).filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() }).filter({ j => (j.largoEnCm() - bici.largoEnCm()).abs() <= 10 })
 	}
-
-
-  method bicisCompanieras2(bici){
-  	self.bicisDistintasA_(bici).bicisDeIgualMarca(bici).bicisQueNoSuperanElLargoEn10Cm(bici)
-  }
-
-  method bicisDistintasA_(bici){
-  	return bicisEnElDeposito.filter({c => c.codigoIdentificacion() != bici.codigoIdentificacion()})
-  }
-
-  method bicisDeIgualMarca(bici){
-  	return  bicisEnElDeposito.filter({i => i.marca() == bici.marca() })
-  }
-
-  method bicisQueNoSuperanElLargoEn10Cm(bici){
-  	return bicisEnElDeposito.filter({j => (j.largoEnCm() - bici.largoEnCm()).abs() <= 10 })
-  }
  
 }
 
