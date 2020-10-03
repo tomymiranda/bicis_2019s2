@@ -1,0 +1,22 @@
+import accesorio.*
+import bicis.*
+import deposito.*
+
+
+
+test "el deposito cumple con las especificaciones correctas"{
+	const bici1 = new Bici(rodado = 28,largoEnCm=150,marca = "Olmo")
+	const bici2 = new Bici(rodado = 26,largoEnCm=110,marca = "legnano")
+	const bici3 = new Bici(rodado = 20,largoEnCm=90,marca = "legnano")
+	
+	const deposito = new Deposito()
+	deposito.agregarBici(bici1)
+	deposito.agregarBici(bici2)
+	deposito.agregarBici(bici3)
+	
+	assert.equals(["un/a Bici","un/a Bici"], deposito.coleccionDeBicisRapidas())
+	assert.equals(#{"olmo","legnano"},deposito.coleccionDeMarcasSinRepetir())	
+	assert.notThat(deposito.esNocturno())
+	assert.that(deposito.tieneBiciParaLlevarCargaDe_(10))
+	assert.that(deposito.tieneBiciParaLlevarCargaDe_(50))
+}

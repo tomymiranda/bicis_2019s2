@@ -2,11 +2,6 @@ import accesorio.*
 import bicis.*
 import deposito.*
 
-test "testX" {
-
-	assert.that(true)
-
-}
 test "se crea bici1 con especificaciones correctas"{
 	const bici1 = new Bici(rodado = 28,largoEnCm=150,marca = "Olmo")
 	bici1.agregarAccesorio(new Farolito())
