@@ -1,0 +1,43 @@
+import accesorio.*
+import bicis.*
+import deposito.*
+
+test "testX" {
+
+	assert.that(true)
+
+}
+test "se crea bici1 con especificaciones correctas"{
+	const bici1 = new Bici(rodado = 28,largoEnCm=150,marca = "Olmo")
+	bici1.agregarAccesorio(new Farolito())
+	
+	
+	
+	assert.equals(85,bici1.altura())
+	assert.equals(14.5,bici1.peso())
+	assert.equals(1,bici1.cantidadDeAccesoriosLivianos())
+}
+
+test "se crea bici2 con especificaciones correctas"{
+	const bici2 = new Bici(rodado = 26,largoEnCm=110,marca = "legnano")
+	bici2.agregarAccesorio(new Farolito())
+	bici2.agregarAccesorio(new Canasto(volumen = 8))
+	bici2.agregarAccesorio(new MorralDeBici(largo =21,ojoDeGato=true))
+	
+	assert.equals(80,bici2.altura())
+	assert.equals(15.5,bici2.peso())
+	assert.equals(2,bici2.cantidadDeAccesoriosLivianos())
+	assert.equals(23,bici2.carga())
+	assert.that(bici2.tieneLuz())
+}
+
+test "se crea bici 3 con especificaciones correctas"{
+	const bici3 = new Bici(rodado = 20,largoEnCm=90,marca = "legnano")
+	bici3.agregarAccesorio(new MorralDeBici(largo =6,ojoDeGato=false))
+	
+	assert.equals(65,bici3.altura())
+	assert.equals(11.2,bici3.peso())
+	assert.equals(0,bici3.cantidadDeAccesoriosLivianos())
+	assert.equals(2,bici3.carga())
+	assert.notThat(bici3.tieneLuz())
+}

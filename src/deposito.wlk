@@ -42,5 +42,8 @@ class Deposito {
 		return bicisEnElDeposito.filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() }).filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() }).filter({ j => (j.largoEnCm() - bici.largoEnCm()).abs() <= 10 })
 	}
  
+ 	method hayBicisCompanierasEntreEllas(){
+ 		return bicisEnElDeposito.any({c => self.bicisCompanieras(c)})
+ 	}
 }
 
