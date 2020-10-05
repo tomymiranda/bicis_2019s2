@@ -2,37 +2,90 @@ import accesorio.*
 import bicis.*
 import deposito.*
 
-test "se crea bici1 con especificaciones correctas"{
-	const bici1 = new Bici(rodado = 28,largoEnCm=150,marca = "Olmo")
+test "se crea bici1 con altura 85" {
+	const bici1 = new Bici(rodado = 28, largoEnCm = 150, marca = "Olmo")
 	bici1.agregarAccesorio(new Farolito())
-	
-	
-	
-	assert.equals(85,bici1.altura())
-	assert.equals(14.5,bici1.peso())
-	assert.equals(1,bici1.cantidadDeAccesoriosLivianos())
+	assert.equals(85, bici1.altura())
 }
 
-test "se crea bici2 con especificaciones correctas"{
-	const bici2 = new Bici(rodado = 26,largoEnCm=110,marca = "legnano")
+test"se crea bici1 con peso 14.5" {
+	const bici1 = new Bici(rodado = 28, largoEnCm = 150, marca = "Olmo")
+	bici1.agregarAccesorio(new Farolito())
+	assert.equals(14.5, bici1.peso())
+}
+
+test"se crea bici1 con 1 accesorio liviano" {
+	const bici1 = new Bici(rodado = 28, largoEnCm = 150, marca = "Olmo")
+	bici1.agregarAccesorio(new Farolito())
+	assert.equals(1, bici1.cantidadDeAccesoriosLivianos())
+}
+
+test "se crea bici2 con altura 80" {
+	const bici2 = new Bici(rodado = 26, largoEnCm = 110, marca = "legnano")
 	bici2.agregarAccesorio(new Farolito())
 	bici2.agregarAccesorio(new Canasto(volumen = 8))
-	bici2.agregarAccesorio(new MorralDeBici(largo =21,ojoDeGato=true))
-	
-	assert.equals(80,bici2.altura())
-	assert.equals(15.5,bici2.peso())
-	assert.equals(2,bici2.cantidadDeAccesoriosLivianos())
-	assert.equals(23,bici2.carga())
+	bici2.agregarAccesorio(new MorralDeBici(largo = 21, ojoDeGato = true))
+	assert.equals(80, bici2.altura())
+}
+
+test "se crea bici2 con peso 15.5" {
+	const bici2 = new Bici(rodado = 26, largoEnCm = 110, marca = "legnano")
+	bici2.agregarAccesorio(new Farolito())
+	bici2.agregarAccesorio(new Canasto(volumen = 8))
+	bici2.agregarAccesorio(new MorralDeBici(largo = 21, ojoDeGato = true))
+	assert.equals(15.5, bici2.peso())
+}
+
+test "se crea bici2 con 2 accesorios livianos" {
+	const bici2 = new Bici(rodado = 26, largoEnCm = 110, marca = "legnano")
+	bici2.agregarAccesorio(new Farolito())
+	bici2.agregarAccesorio(new Canasto(volumen = 8))
+	bici2.agregarAccesorio(new MorralDeBici(largo = 21, ojoDeGato = true))
+	assert.equals(2, bici2.cantidadDeAccesoriosLivianos())
+}
+
+test "se crea bici2 que puede llevar 23 kg de carga" {
+	const bici2 = new Bici(rodado = 26, largoEnCm = 110, marca = "legnano")
+	bici2.agregarAccesorio(new Farolito())
+	bici2.agregarAccesorio(new Canasto(volumen = 8))
+	bici2.agregarAccesorio(new MorralDeBici(largo = 21, ojoDeGato = true))
+	assert.equals(23, bici2.carga())
+}
+
+test "se crea bici2 con luz" {
+	const bici2 = new Bici(rodado = 26, largoEnCm = 110, marca = "legnano")
+	bici2.agregarAccesorio(new Farolito())
+	bici2.agregarAccesorio(new Canasto(volumen = 8))
+	bici2.agregarAccesorio(new MorralDeBici(largo = 21, ojoDeGato = true))
 	assert.that(bici2.tieneLuz())
 }
 
-test "se crea bici 3 con especificaciones correctas"{
-	const bici3 = new Bici(rodado = 20,largoEnCm=90,marca = "legnano")
-	bici3.agregarAccesorio(new MorralDeBici(largo =6,ojoDeGato=false))
-	
-	assert.equals(65,bici3.altura())
-	assert.equals(11.2,bici3.peso())
-	assert.equals(0,bici3.cantidadDeAccesoriosLivianos())
-	assert.equals(2,bici3.carga())
+test "se crea bici 3 con altura de 65" {
+	const bici3 = new Bici(rodado = 20, largoEnCm = 90, marca = "legnano")
+	bici3.agregarAccesorio(new MorralDeBici(largo = 6, ojoDeGato = false))
+	assert.equals(65, bici3.altura())
+}
+
+test "se crea bici3 con peso de 11.2" {
+	const bici3 = new Bici(rodado = 20, largoEnCm = 90, marca = "legnano")
+	bici3.agregarAccesorio(new MorralDeBici(largo = 6, ojoDeGato = false))
+	assert.equals(11.2, bici3.peso())
+}
+
+test "se crea bici3 con ningun accesorio liviano" {
+	const bici3 = new Bici(rodado = 20, largoEnCm = 90, marca = "legnano")
+	bici3.agregarAccesorio(new MorralDeBici(largo = 6, ojoDeGato = false))
+	assert.equals(0, bici3.cantidadDeAccesoriosLivianos())
+}
+
+test "se crea bici3 con carga de 2kg" {
+	const bici3 = new Bici(rodado = 20, largoEnCm = 90, marca = "legnano")
+	bici3.agregarAccesorio(new MorralDeBici(largo = 6, ojoDeGato = false))
+	assert.equals(2, bici3.carga())
+}
+
+test "se crea bici3 sin objeto de luz" {
+	const bici3 = new Bici(rodado = 20, largoEnCm = 90, marca = "legnano")
+	bici3.agregarAccesorio(new MorralDeBici(largo = 6, ojoDeGato = false))
 	assert.notThat(bici3.tieneLuz())
 }
