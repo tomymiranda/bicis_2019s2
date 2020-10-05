@@ -6,17 +6,24 @@ import deposito.*
 
 test "el deposito cumple con las especificaciones correctas"{
 	const bici1 = new Bici(rodado = 28,largoEnCm=150,marca = "Olmo")
+	bici1.agregarAccesorio(new Farolito())
+	
 	const bici2 = new Bici(rodado = 26,largoEnCm=110,marca = "legnano")
+	bici2.agregarAccesorio(new Farolito())
+	bici2.agregarAccesorio(new Canasto(volumen = 8))
+	bici2.agregarAccesorio(new MorralDeBici(largo =21,ojoDeGato=true))
+	
 	const bici3 = new Bici(rodado = 20,largoEnCm=90,marca = "legnano")
+	bici3.agregarAccesorio(new MorralDeBici(largo =6,ojoDeGato=false))
 	
 	const deposito = new Deposito()
 	deposito.agregarBici(bici1)
 	deposito.agregarBici(bici2)
 	deposito.agregarBici(bici3)
 	
-	assert.equals(["un/a Bici","un/a Bici"], deposito.coleccionDeBicisRapidas())
-	assert.equals(#{"olmo","legnano"},deposito.coleccionDeMarcasSinRepetir())	
+	assert.equals([bici1,bici2], deposito.coleccionDeBicisRapidas())
+	assert.equals(#{"Olmo","legnano"},deposito.coleccionDeMarcasSinRepetir())	
 	assert.notThat(deposito.esNocturno())
 	assert.that(deposito.tieneBiciParaLlevarCargaDe_(10))
-	assert.that(deposito.tieneBiciParaLlevarCargaDe_(50))
+	assert.notThat(deposito.tieneBiciParaLlevarCargaDe_(50))
 }
