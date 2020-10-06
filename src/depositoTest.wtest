@@ -81,3 +81,13 @@ test "el deposito no tiene una bici para llevar 50kg de carga" {
 	deposito.agregarBici(bici3)
 	assert.notThat(deposito.tieneBiciParaLlevarCargaDe_(50))
 }
+test"la bici1 tiene como companiera a la bici2"{
+	const bici1 = new Bici(rodado = 28, largoEnCm = 150, marca = "Olmo")
+	bici1.agregarAccesorio(new Farolito())
+	const bici2 = new Bici(rodado = 28, largoEnCm = 150, marca = "Olmo")
+	bici2.agregarAccesorio(new Farolito())
+	const deposito = new Deposito()
+	deposito.agregarBici(bici1)
+	deposito.agregarBici(bici2)
+	assert.equals([bici2],deposito.bicisCompanieras(bici1))
+}

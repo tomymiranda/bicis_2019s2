@@ -39,7 +39,9 @@ class Deposito {
 
 	// hice los 3 filter porque no estoy seguro si en un bloque se pueden poner 2 condiciones 
 	method bicisCompanieras(bici) {
-		return bicisEnElDeposito.filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() }).filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() }).filter({ j => (j.largoEnCm() - bici.largoEnCm()).abs() <= 10 })
+		return bicisEnElDeposito.filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() })
+		.filter({ c => c.codigoIdentificacion() != bici.codigoIdentificacion() })
+		.filter({ j => (j.largoEnCm() - bici.largoEnCm()).abs() <= 10 })
 	}
  
  	method hayBicisCompanierasEntreEllas(){
